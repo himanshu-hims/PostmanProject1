@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "3c56596c-f099-440b-a1cc-6957fdd4fbb7",
+		"name": "validation schema",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23560821"
+	},
+	"item": [
+		{
+			"name": "https://reqres.in/api/users?page=2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var schema = {\r",
+							"    \"$schema\": \"https://json-schema.org/draft/2019-09/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"title\": \"Root Schema\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"default\": {},\r",
+							"    \"required\": [\r",
+							"        \"id\",\r",
+							"        \"email\",\r",
+							"        \"first_name\",\r",
+							"        \"last_name\",\r",
+							"        \"avatar\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"id\": {\r",
+							"            \"title\": \"The id Schema\",\r",
+							"            \"type\": \"number\",\r",
+							"            \"default\": 0,\r",
+							"            \"examples\": [\r",
+							"                7\r",
+							"            ]\r",
+							"        },\r",
+							"        \"email\": {\r",
+							"            \"title\": \"The email Schema\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"michael.lawson@reqres.in\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"first_name\": {\r",
+							"            \"title\": \"The first_name Schema\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Michael\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"last_name\": {\r",
+							"            \"title\": \"The last_name Schema\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Lawson\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"avatar\": {\r",
+							"            \"title\": \"The avatar Schema\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"https://reqres.in/img/faces/7-image.jpg\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"examples\": [{\r",
+							"        \"id\": 7,\r",
+							"        \"email\": \"michael.lawson@reqres.in\",\r",
+							"        \"first_name\": \"Michael\",\r",
+							"        \"last_name\": \"Lawson\",\r",
+							"        \"avatar\": \"https://reqres.in/img/faces/7-image.jpg\"\r",
+							"    }]\r",
+							"}\r",
+							"\r",
+							"var responseJson = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test('Schema is valid', function () {\r",
+							"    pm.expect(tv4.validate(responseJson, schema)).to.be.false;\r",
+							"    \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
