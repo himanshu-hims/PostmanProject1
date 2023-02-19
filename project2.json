@@ -84,6 +84,10 @@
 							"    pm.expect(tv4.validate(responseJson, schema)).to.be.false;\r",
 							"    \r",
 							"});\r",
+							"\r",
+							"pm.test(\"validating status code\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
 							""
 						],
 						"type": "text/javascript"
